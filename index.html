@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorpresa para mi Profesora</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+
+    background:linear-gradient(
+        135deg,
+        #ffe0ec,
+        #ffd6e7,
+        #f7d9ff,
+        #ffeaf4
+    );
+
+    background-size:400% 400%;
+    animation:fondo 12s ease infinite;
+}
+
+@keyframes fondo{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.pantalla{
+    text-align:center;
+    color:white;
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+button{
+    padding:18px 40px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:white;
+
+    color:#ff4f8b;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-5px);
+}
+
+.tarjeta{
+    display:none;
+    width:min(90%, 700px);
+    max-height:85vh;
+
+    overflow-y:auto;
+
+    background:rgba(255,255,255,.35);
+    backdrop-filter:blur(20px);
+
+    color:#5a4b5c;
+
+    padding:40px;
+    border-radius:30px;
+
+    text-align:center;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.12);
+}
+
+.tarjeta h2{
+    font-size:clamp(1.8rem, 5vw, 3rem);
+}
+
+.tarjeta p{
+    font-size:clamp(1rem, 2.5vw, 1.2rem);
+    line-height:1.8;
+}
+
+.tarjeta h3{
+    font-size:clamp(1.1rem, 3vw, 1.6rem);
+}
+
+@media (max-width:768px){
+
+    .tarjeta{
+        width:95%;
+        padding:25px;
+    }
+
+    .tarjeta h2{
+        font-size:2rem;
+    }
+
+    .tarjeta p{
+        font-size:1rem;
+        line-height:1.6;
+    }
+
+    .tarjeta h3{
+        font-size:1.1rem;
+    }
+}
+
+
+.corazon{
+    position:absolute;
+    animation:subir 6s linear forwards;
+    pointer-events:none;
+}
+
+@keyframes subir{
+
+    from{
+        transform:
+        translateY(0)
+        scale(.8);
+
+        opacity:1;
+    }
+
+    to{
+        transform:
+        translateY(-120vh)
+        scale(1.5);
+
+        opacity:0;
+    }
+
+}
+
+.luz{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:white;
+    border-radius:50%;
+    opacity: 0.7;
+    animation:flotar 10s linear infinite;
+}
+
+@keyframes flotar{
+    from{
+        transform:translateY(100vh);
+
+    } 
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+  
+</style>
+</head>
+<body>
+
+<div class="pantalla" id="inicio">
+    <h1>🎁 Tiene una sorpresa</h1>
+    <button onclick="abrirSorpresa()">Abrir Sorpresa</button>
+</div>
+
+<div class="tarjeta" id="tarjeta">
+
+```
+<h2>🎂 ¡Feliz Cumpleaños, Miss Lucía! 🎂</h2>
+
+<p>
+    Querida Miss Lucía:
+    <br><br>
+
+    En este día tan especial, quiero desearle un muy feliz cumpleaños. Que este nuevo año de vida esté lleno de alegría, salud, bendiciones y momentos inolvidables.
+</p>
+
+<p>
+    También quiero agradecerle por su paciencia, dedicación y por todo lo que nos enseña cada día.
+</p>
+
+<p>
+    Su esfuerzo y cariño hacen una gran diferencia en la vida de sus estudiantes. Usted nos inspira a aprender y a dar lo mejor de nosotros mismos.
+</p>
+
+<p>
+    Que cada uno de sus sueños y metas se hagan realidad, y que nunca le falten motivos para sonreír.
+</p>
+
+<p>
+    ✨ Gracias por todo lo que hace por nosotros. ✨
+</p>
+
+<h3>
+    💖 Con mucho cariño y respeto 💖
+    <br><br>
+    — Loveguens —
+</h3>
+```
+
+</div>
+
+
+<script>
+
+for(let i=0;i<40;i++){
+
+    let luz=document.createElement("div");
+
+    luz.className="luz";
+
+    luz.style.left=Math.random()*100+"vw";
+    luz.style.animationDuration=(Math.random()*8+6)+"s";
+    luz.style.animationDelay=Math.random()*5+"s";
+
+    document.body.appendChild(luz);
+}
+
+function abrirSorpresa(){
+
+    document.getElementById("inicio").style.display="none";
+    document.getElementById("tarjeta").style.display="block";
+
+    lanzarEmojis();
+}
+
+function lanzarEmojis(){
+
+    const emojis=[
+        "❤️",
+        "💖",
+        "🌸",
+        "✨",
+        "💐",
+        "🎂",
+        "🦋",
+        "🌷"
+    ];
+
+    let contador=0;
+
+    let intervalo=setInterval(()=>{
+
+        let c=document.createElement("div");
+
+        c.className="corazon";
+
+        c.innerHTML=
+        emojis[Math.floor(
+        Math.random()*emojis.length)];
+
+        c.style.left=
+        Math.random()*window.innerWidth+"px";
+
+        c.style.bottom="-50px";
+
+        c.style.fontSize=
+        (25+Math.random()*20)+"px";
+
+        document.body.appendChild(c);
+
+        setTimeout(()=>{
+            c.remove();
+        },6000);
+
+        
+
+    },300);
+
+}
+
+</script>
+
+</body>
+</html>
