@@ -3,33 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sorpresa para mi Profesora</title>
+<title>Feliz Cumpleaños Miss Lucía</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-    height:100vh;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
-
     background:linear-gradient(
-        135deg,
-        #ffe0ec,
+        -45deg,
         #ffd6e7,
+        #ffe5f1,
         #f7d9ff,
-        #ffeaf4
+        #ffeef7
     );
-
     background-size:400% 400%;
     animation:fondo 12s ease infinite;
+    position:relative;
 }
 
 @keyframes fondo{
@@ -40,33 +42,26 @@ body{
 
 .pantalla{
     text-align:center;
-    color:white;
+    color:#ffffff;
+    padding:20px;
 }
 
-h1{
-    font-size:3rem;
+.pantalla h1{
+    font-size:clamp(2rem,6vw,4rem);
     margin-bottom:20px;
+    text-shadow:0 4px 10px rgba(0,0,0,.15);
 }
 
 button{
     padding:18px 40px;
-
     border:none;
-
     border-radius:50px;
-
-    background:white;
-
-    color:#ff4f8b;
-
-    font-size:20px;
-
-    font-weight:bold;
-
+    font-size:1.2rem;
+    font-weight:700;
     cursor:pointer;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.1);
-
+    background:white;
+    color:#ff4f8b;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
     transition:.3s;
 }
 
@@ -76,80 +71,68 @@ button:hover{
 
 .tarjeta{
     display:none;
-    width:min(90%, 700px);
-    max-height:85vh;
+    width:min(92%,700px);
 
-    overflow-y:auto;
-
-    background:rgba(255,255,255,.35);
+    background:rgba(255,255,255,.40);
     backdrop-filter:blur(20px);
 
     color:#5a4b5c;
 
-    padding:40px;
+    padding:30px;
     border-radius:30px;
 
     text-align:center;
 
     box-shadow:0 20px 60px rgba(0,0,0,.12);
+
+    animation:aparecer 1.2s ease;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .tarjeta h2{
-    font-size:clamp(1.8rem, 5vw, 3rem);
+    font-size:clamp(1.8rem,5vw,3rem);
+    color:#ff4f8b;
+    margin-bottom:20px;
 }
 
 .tarjeta p{
-    font-size:clamp(1rem, 2.5vw, 1.2rem);
-    line-height:1.8;
+    font-size:clamp(1rem,2.5vw,1.15rem);
+    line-height:1.7;
+    margin:15px 0;
 }
 
 .tarjeta h3{
-    font-size:clamp(1.1rem, 3vw, 1.6rem);
+    margin-top:20px;
+    color:#ff4f8b;
+    font-size:clamp(1.1rem,3vw,1.5rem);
 }
 
-@media (max-width:768px){
-
-    .tarjeta{
-        width:95%;
-        padding:25px;
-    }
-
-    .tarjeta h2{
-        font-size:2rem;
-    }
-
-    .tarjeta p{
-        font-size:1rem;
-        line-height:1.6;
-    }
-
-    .tarjeta h3{
-        font-size:1.1rem;
-    }
-}
-
-
-.corazon{
-    position:absolute;
-    animation:subir 6s linear forwards;
+.emoji{
+    position:fixed;
     pointer-events:none;
+    z-index:9999;
+    animation:subir linear forwards;
 }
 
 @keyframes subir{
 
     from{
-        transform:
-        translateY(0)
-        scale(.8);
-
+        transform:translateY(0) scale(.8);
         opacity:1;
     }
 
     to{
-        transform:
-        translateY(-120vh)
-        scale(1.5);
-
+        transform:translateY(-120vh) scale(1.5);
         opacity:0;
     }
 
@@ -157,73 +140,90 @@ button:hover{
 
 .luz{
     position:absolute;
-    width:8px;
-    height:8px;
-    background:white;
+    width:6px;
+    height:6px;
     border-radius:50%;
-    opacity: 0.7;
-    animation:flotar 10s linear infinite;
+    background:white;
+    opacity:.7;
+    animation:flotar linear infinite;
 }
 
 @keyframes flotar{
     from{
         transform:translateY(100vh);
-
-    } 
+    }
     to{
         transform:translateY(-120vh);
     }
 }
 
-  
+@media(max-width:768px){
+
+    .tarjeta{
+        padding:20px;
+        border-radius:20px;
+    }
+
+    button{
+        width:90%;
+        max-width:300px;
+    }
+}
+
 </style>
 </head>
 <body>
 
 <div class="pantalla" id="inicio">
     <h1>🎁 Tiene una sorpresa</h1>
-    <button onclick="abrirSorpresa()">Abrir Sorpresa</button>
+    <button onclick="abrirSorpresa()">
+        Abrir Sorpresa
+    </button>
 </div>
 
 <div class="tarjeta" id="tarjeta">
 
-```
-<h2>🎂 ¡Feliz Cumpleaños, Miss Lucía! 🎂</h2>
+    <h2>🎂 ¡Feliz Cumpleaños, Miss Lucía! 🎂</h2>
 
-<p>
-    Querida Miss Lucía:
-    <br><br>
+    <p>
+        Querida Miss Lucía:
+        <br><br>
 
-    En este día tan especial, quiero desearle un muy feliz cumpleaños. Que este nuevo año de vida esté lleno de alegría, salud, bendiciones y momentos inolvidables.
-</p>
+        En este día tan especial, quiero desearle un muy feliz cumpleaños.
+        Que este nuevo año de vida esté lleno de alegría, salud,
+        bendiciones y momentos inolvidables.
+    </p>
 
-<p>
-    También quiero agradecerle por su paciencia, dedicación y por todo lo que nos enseña cada día.
-</p>
+    <p>
+        También quiero agradecerle por su paciencia,
+        dedicación y por todo lo que nos enseña cada día.
+    </p>
 
-<p>
-    Su esfuerzo y cariño hacen una gran diferencia en la vida de sus estudiantes. Usted nos inspira a aprender y a dar lo mejor de nosotros mismos.
-</p>
+    <p>
+        Su esfuerzo y cariño hacen una gran diferencia en la vida de sus estudiantes.
+        Usted nos inspira a aprender y a dar lo mejor de nosotros mismos.
+    </p>
 
-<p>
-    Que cada uno de sus sueños y metas se hagan realidad, y que nunca le falten motivos para sonreír.
-</p>
+    <p>
+        Que cada uno de sus sueños y metas se hagan realidad,
+        y que nunca le falten motivos para sonreír.
+    </p>
 
-<p>
-    ✨ Gracias por todo lo que hace por nosotros. ✨
-</p>
+    <p>
+        ✨ Gracias por todo lo que hace por nosotros. ✨
+    </p>
 
-<h3>
-    💖 Con mucho cariño y respeto 💖
-    <br><br>
-    — Loveguens —
-</h3>
-```
+    <h3>
+        💖 Con mucho cariño y respeto 💖
+        <br><br>
+        — Loveguens —
+    </h3>
 
 </div>
 
-
 <script>
+
+// Luces elegantes de fondo
 
 for(let i=0;i<40;i++){
 
@@ -232,8 +232,12 @@ for(let i=0;i<40;i++){
     luz.className="luz";
 
     luz.style.left=Math.random()*100+"vw";
-    luz.style.animationDuration=(Math.random()*8+6)+"s";
-    luz.style.animationDelay=Math.random()*5+"s";
+
+    luz.style.animationDuration=
+    (8+Math.random()*10)+"s";
+
+    luz.style.animationDelay=
+    Math.random()*5+"s";
 
     document.body.appendChild(luz);
 }
@@ -241,6 +245,7 @@ for(let i=0;i<40;i++){
 function abrirSorpresa(){
 
     document.getElementById("inicio").style.display="none";
+
     document.getElementById("tarjeta").style.display="block";
 
     lanzarEmojis();
@@ -259,36 +264,35 @@ function lanzarEmojis(){
         "🌷"
     ];
 
-    let contador=0;
+    setInterval(()=>{
 
-    let intervalo=setInterval(()=>{
+        let emoji=document.createElement("div");
 
-        let c=document.createElement("div");
+        emoji.className="emoji";
 
-        c.className="corazon";
-
-        c.innerHTML=
+        emoji.innerHTML=
         emojis[Math.floor(
-        Math.random()*emojis.length)];
+            Math.random()*emojis.length
+        )];
 
-        c.style.left=
-        Math.random()*window.innerWidth+"px";
+        emoji.style.left=
+        Math.random()*100+"vw";
 
-        c.style.bottom="-50px";
+        emoji.style.bottom="-50px";
 
-        c.style.fontSize=
+        emoji.style.fontSize=
         (25+Math.random()*20)+"px";
 
-        document.body.appendChild(c);
+        emoji.style.animationDuration=
+        (4+Math.random()*4)+"s";
+
+        document.body.appendChild(emoji);
 
         setTimeout(()=>{
-            c.remove();
-        },6000);
+            emoji.remove();
+        },8000);
 
-        
-
-    },300);
-
+    },180);
 }
 
 </script>
