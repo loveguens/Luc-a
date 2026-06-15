@@ -71,21 +71,28 @@ button:hover{
 
 .tarjeta{
     display:none;
-    width:min(92%,700px);
+
+    position:fixed;
+
+    width:min(90%, 700px);
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
 
     background:rgba(255,255,255,.40);
     backdrop-filter:blur(20px);
 
-    color:#5a4b5c;
+    padding:25px;
 
-    padding:30px;
     border-radius:30px;
 
     text-align:center;
 
-    box-shadow:0 20px 60px rgba(0,0,0,.12);
+    color:#5a4b5c;
 
-    animation:aparecer 1.2s ease;
+    box-shadow:0 20px 60px rgba(0,0,0,.12);
 }
 
 @keyframes aparecer{
@@ -100,21 +107,17 @@ button:hover{
 }
 
 .tarjeta h2{
-    font-size:clamp(1.8rem,5vw,3rem);
-    color:#ff4f8b;
-    margin-bottom:20px;
+    font-size:clamp(1.6rem,4vw,2.5rem);
 }
 
 .tarjeta p{
-    font-size:clamp(1rem,2.5vw,1.15rem);
-    line-height:1.7;
-    margin:15px 0;
+    font-size:clamp(0.95rem,2vw,1.1rem);
+    line-height:1.5;
+    margin:10px 0;
 }
 
 .tarjeta h3{
-    margin-top:20px;
-    color:#ff4f8b;
-    font-size:clamp(1.1rem,3vw,1.5rem);
+    font-size:clamp(1rem,2.5vw,1.3rem);
 }
 
 .emoji{
